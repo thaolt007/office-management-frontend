@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ncc-login',
+  selector: 'cdk-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

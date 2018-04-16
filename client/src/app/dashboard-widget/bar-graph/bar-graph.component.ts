@@ -3,7 +3,7 @@ import { Chart } from 'chart.js';
 
 
 @Component({
-  selector: 'ncc-bar-graph',
+  selector: 'cdk-bar-graph',
   templateUrl: './bar-graph.component.html',
   styleUrls: ['./bar-graph.component.scss']
 })

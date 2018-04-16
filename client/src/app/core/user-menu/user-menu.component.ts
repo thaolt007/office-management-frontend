@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'ncc-user-menu',
+  selector: 'cdk-user-menu',
   templateUrl: './user-menu.component.html',
   styleUrls: ['./user-menu.component.scss']
 })

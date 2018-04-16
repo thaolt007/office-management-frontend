@@ -35,23 +35,23 @@ $warn    : $mat-red;
 $primary-app-primary: mat-palette($primary , 400);
 $primary-app-accent:  mat-palette($accent , 900);
 $primary-app-warn:    mat-palette($warn );
-$ncc-theme:   mat-light-theme($primary-app-primary, $primary-app-accent,$primary-app-warn);
+$cdk-theme:   mat-light-theme($primary-app-primary, $primary-app-accent,$primary-app-warn);
 
-ncc-sidemenu{
+cdk-sidemenu{
     $sidemenu-app-primary: mat-palette($primary , 400);
     $sidemenu-app-accent:  mat-palette($accent , 900);
     $sidemenu-app-warn:    mat-palette($warn );
-    $ncc-sidemenu-theme:   mat-dark-theme($sidemenu-app-primary, $sidemenu-app-accent,$sidemenu-app-warn);
-    @include mat-list-theme($ncc-sidemenu-theme);
+    $cdk-sidemenu-theme:   mat-dark-theme($sidemenu-app-primary, $sidemenu-app-accent,$sidemenu-app-warn);
+    @include mat-list-theme($cdk-sidemenu-theme);
 }
 
 
-ncc-sidemenu-item{
-    @include sidemenu-item($ncc-theme,20px)
+cdk-sidemenu-item{
+    @include sidemenu-item($cdk-theme,20px)
 }
 
 
-ncc-dashcard {
+cdk-dashcard {
     $dashcard-primary: mat-palette($primary);
     $dashcard-accent:  mat-palette($accent);
     $dashcard-warn:    mat-palette($warn);
@@ -59,18 +59,18 @@ ncc-dashcard {
     @include dashcard($dashcard-theme);
 }
 
-ncc-profile-card{
+cdk-profile-card{
   $dashboard-profile-primary: mat-palette($primary , 400);
     $dashboard-profile-accent:  mat-palette($accent , 900);
     $dashboard-profile-warn:    mat-palette($warn );
-    $ncc-dashboard-profile-theme:   mat-dark-theme($dashboard-profile-primary, $dashboard-profile-accent,$dashboard-profile-warn);
-    @include dashboard-profile($ncc-dashboard-profile-theme);
-    @include mat-tabs-theme($ncc-dashboard-profile-theme);
+    $cdk-dashboard-profile-theme:   mat-dark-theme($dashboard-profile-primary, $dashboard-profile-accent,$dashboard-profile-warn);
+    @include dashboard-profile($cdk-dashboard-profile-theme);
+    @include mat-tabs-theme($cdk-dashboard-profile-theme);
 }
-@include angular-material-theme($ncc-theme);
-@include auth($ncc-theme);
-@include round-progressbar($ncc-theme);
-@include sales-list($ncc-theme);
+@include angular-material-theme($cdk-theme);
+@include auth($cdk-theme);
+@include round-progressbar($cdk-theme);
+@include sales-list($cdk-theme);
 
 html {
   height:100%;

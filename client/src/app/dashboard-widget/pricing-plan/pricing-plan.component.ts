@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ncc-pricing-plan',
+  selector: 'cdk-pricing-plan',
   templateUrl: './pricing-plan.component.html',
   styleUrls: ['./pricing-plan.component.scss']
 })

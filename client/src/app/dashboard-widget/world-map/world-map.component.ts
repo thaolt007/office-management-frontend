@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 declare const AmCharts;
 @Component({
-  	selector: 'ncc-world-map',
+  	selector: 'cdk-world-map',
   	templateUrl: './world-map.component.html',
   	styleUrls: ['./world-map.component.scss']
 })

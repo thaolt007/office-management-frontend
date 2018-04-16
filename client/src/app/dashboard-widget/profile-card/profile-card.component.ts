@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ncc-profile-card',
+  selector: 'cdk-profile-card',
   templateUrl: './profile-card.component.html',
   styleUrls: ['./profile-card.component.scss']
 })

@@ -2,7 +2,7 @@ import { Component, OnInit ,Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 @Component({
-    selector: 'ncc-dashcard',
+    selector: 'cdk-dashcard',
     templateUrl: './dashcard.component.html',
     styleUrls: ['./dashcard.component.scss']
 })

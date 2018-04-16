@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'ncc-doughnut-graph',
+  selector: 'cdk-doughnut-graph',
   templateUrl: './doughnut-graph.component.html',
   styleUrls: ['./doughnut-graph.component.scss']
 })

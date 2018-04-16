@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ncc-sales-list',
+  selector: 'cdk-sales-list',
   templateUrl: './sales-list.component.html',
   styleUrls: ['./sales-list.component.scss']
 })

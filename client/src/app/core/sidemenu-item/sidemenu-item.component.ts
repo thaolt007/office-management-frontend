@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'ncc-sidemenu-item',
+  selector: 'cdk-sidemenu-item',
   templateUrl: './sidemenu-item.component.html',
   styleUrls: ['./sidemenu-item.component.scss']
 })
