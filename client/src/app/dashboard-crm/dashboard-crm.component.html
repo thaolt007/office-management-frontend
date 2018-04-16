@@ -1,0 +1,39 @@
+
+<div fxLayout="row" fxLayoutWrap>
+    <div  *ngFor="let dash of dashCard"   fxFlex.lt-sm="100"  fxFlex.sm="50" fxFlex.md="25" >
+        <ncc-dashcard  [dashData]="dash" ></ncc-dashcard>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutWrap>
+    <ncc-bar-graph fxFlex="37.5" fxFlex.lt-sm="100"  fxFlex.sm="50" ></ncc-bar-graph>
+    <ncc-doughnut-graph fxFlex="37.5" fxFlex.lt-sm="100"  fxFlex.sm="50" ></ncc-doughnut-graph>
+    <ncc-weather fxFlex="25" fxFlex.lt-sm="100"  fxFlex.sm="100" ></ncc-weather>
+</div>
+<div fxLayout="row" fxLayoutWrap>
+     <ncc-line-graph fxFlex="75" fxFlex.lt-sm="100"  fxFlex.sm="50" ></ncc-line-graph>
+     <ncc-share-price fxFlex="25" fxFlex.lt-sm="100"  fxFlex.sm="50"  ></ncc-share-price>
+</div>
+<div fxLayout="row" fxLayoutWrap>
+     <ncc-sales-list fxFlex="60"  fxFlex.lt-sm="100"  fxFlex.sm="100" fxFlex.md="70" ></ncc-sales-list>
+     <ncc-profile-card fxFlex="40"  fxFlex.lt-sm="100"  fxFlex.sm="100" fxFlex.md="30" ></ncc-profile-card>
+</div>
+
+<div fxLayout="row" fxLayoutWrap>
+    <div  fxFlex.lt-sm="100"  fxFlex.sm="50" fxFlex.md="25" >
+       <ncc-round-progressbar [title]="'SALES'"  [current]="'23'" [max]="'100'" [background]="'#FFF968'" [color]="'#B1A7FF'" [boxcolor]="'#7986CB'"  ></ncc-round-progressbar>
+    </div>
+    <div fxFlex.lt-sm="100"  fxFlex.sm="50" fxFlex.md="25" >
+       <ncc-round-progressbar  [title]="'LEADS'" [current]="'33'" [max]="'100'" [background]="'#FFE268'" [color]="'#A7C1FF'" [boxcolor]="'#42A5F5'"  ></ncc-round-progressbar>
+    </div>
+    <div fxFlex.lt-sm="100"  fxFlex.sm="50" fxFlex.md="25" >
+      <ncc-round-progressbar  [title]="'ASSETS'" [current]="'78'" [max]="'100'" [background]="'#FFC368'" [color]="'#A7F0FF'" [boxcolor]="'#26A69A'"  ></ncc-round-progressbar>
+    </div>
+    <div fxFlex.lt-sm="100"  fxFlex.sm="50" fxFlex.md="25" >
+        <ncc-round-progressbar  [title]="'BANKING'" [current]="'90'" [max]="'100'" [background]="'#FFCF68'" [color]="'#A7DEFF'" [boxcolor]="'#26C6DA'"  ></ncc-round-progressbar>
+    </div>    
+</div>
+
+<div fxLayout="column" fxLayoutWrap style=" padding: 8px;">
+    <ncc-world-map [tableData]="tableData"></ncc-world-map>
+</div>
+
