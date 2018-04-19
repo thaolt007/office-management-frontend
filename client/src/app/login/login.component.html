@@ -1,29 +1,20 @@
-<div fxLayout="column" fxLayoutAlign="center center"  style="height: 700px;">
-	
-	<div fxLayout="column" fxLayoutAlign="center center"   >
 
-			<div>
-				<mat-form-field class="example-full-width">
-		            <label>Username </label>
-		            <input matInput>
-	        	</mat-form-field>
-			</div>
-
-			<div>
-				<mat-form-field class="example-full-width">
-	            	<label>Password</label>
-	            	<input matInput value="" type="password">
-	        	</mat-form-field>
-			</div>
-	        
-	        <div>
-	        	<mat-card-actions>
-	            	<button mat-button full>Login</button>
-	        	</mat-card-actions>
-	        </div>
-	        
-	        
-	</div>
-
-
-</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <h1>Login Form</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="login-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Username" (keyup)="onKey($event)">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button class="btn__clear" color="primary" >Clear</button>
+    <button mat-raised-button color="primary" class="btn__login" (click)="Login()">Login</button>
+  </mat-card-actions>
+</mat-card>
