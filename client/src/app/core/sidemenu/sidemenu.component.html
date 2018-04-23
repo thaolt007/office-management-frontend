@@ -7,7 +7,7 @@
         <div *ngIf="iconOnly" style="height: 100px;" fxLayoutAlign="space-around center"  >
             <img width="50" [style.borderRadius]="'50%'" src="./assets/user-image.jpg">
         </div>
-        <cdk-sidemenu-item *ngFor="let menu of menus" [menu]="menu" [iconOnly]="iconOnly"> </cdk-sidemenu-item>
+        <cdk-sidemenu-item *ngFor="let menu of menus" [menu]="menu" [iconOnly]="iconOnly" (click)="clickedMenu(menu)"> </cdk-sidemenu-item>
     </div>
 
 </perfect-scrollbar>
