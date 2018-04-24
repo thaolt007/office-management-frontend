@@ -6,6 +6,7 @@ import { LazyLoadModule } from './lazy-load/lazy-load.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { CheckinComponent } from './checkin/checkin.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -18,6 +19,7 @@ import { CheckinComponent } from './checkin/checkin.component';
     LazyLoadModule,
     CoreModule,
     BrowserAnimationsModule,
+    HttpClientModule
   ],
   exports: [
 
