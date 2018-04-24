@@ -1,0 +1,22 @@
+<p>
+  checkout works!
+</p>
+
+  <p>{{timer.toLocaleTimeString()}}</p>
+
+  <div *ngIf="!checkin">
+    <p>You are not checkin. Please checkin first!</p>
+  </div>
+
+  <form class="example-form" *ngIf="checkin && !checkout">
+  
+    <mat-form-field class="example-full-width">
+      <textarea #noteCheckout matInput placeholder="Note a comment"></textarea>
+    </mat-form-field>
+    <button  class="checkoutBtn" mat-button (click)="checkoutSubmit(noteCheckout.value)">Checkout</button>
+  </form>
+  
+  <div *ngIf="checkout">
+    <p>You done checkout at {{checkout.createdDate | date: 'HH:mm:ss dd:MM:yyyy'}}</p>
+    <p>Note: {{checkout.note}}</p>
+  </div>
