@@ -5,5 +5,12 @@ export const menus = [
     "icon": "dashboard",
     "chip"   : false,
     "open"   : true,
+  },
+    {
+    "name": "Report",
+    "link": "/auth/report-detail",
+    "icon": "detail",
+    "chip"   : false,
+    "open"   : true,
   }
 ]

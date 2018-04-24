@@ -1,0 +1,38 @@
+<div >
+	<div class="txth1">
+		<h1  >
+			{{user.userName}}
+			
+		</h1>
+	</div>
+	<div class="example-container">
+	  <mat-form-field class="width">
+	    <div >
+	    	<textarea matInput disabled placeholder="checkin" class="left" >
+	    		Note:{{user.checkIn.note}}
+	    		Time :{{user.checkIn.createdDate|date:"dd-mm-yyyy,hh-mm-ss a"}}
+	    		
+	    	</textarea>
+	    </div>
+	    
+	  </mat-form-field>
+	  
+	
+	  <mat-form-field class="width">
+	    <div >
+	    	<textarea matInput disabled placeholder="checkout" class="right">
+	    	Note: {{user?.checkOut?.note}}
+	    	Time:{{user?.checkOut?.createdDate|date:"dd-mm-yyyy,hh-mm-ss a"}}
+	    	
+	    </textarea>
+	    </div>
+	    
+	  </mat-form-field>
+	<div class="txt-time">TimeWork: {{user.totalTime|date :"hh:mm"}}</div>
+	</div>
+	<div mat-dialog-actions>
+	  
+	  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+	  <button mat-fab color="primary" [mat-dialog-close]="data.animal">OK</button>
+	</div>
+</div>

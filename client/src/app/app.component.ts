@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import {ReportTimesheetComponent} from './report-timesheet/report-timesheet.component';
 import {
   trigger,
   state,
@@ -19,5 +21,10 @@ export class AppComponent {
   getRouteAnimation(outlet) {
       
       return outlet.activatedRouteData.animation
+  }
+  constructor(public dialog: MatDialog) {}
+
+  public openModal() {
+    this.dialog.open(ReportTimesheetComponent, { data: { name: 'angular lessons' } });
   }
 }

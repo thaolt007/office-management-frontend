@@ -10,7 +10,7 @@ export class SidemenuItemComponent implements OnInit {
     @Input() menu;
     @Input() iconOnly:boolean;
     @Input() secondaryMenu:boolean = false;
-
+    @Input() iconSecond:boolean;
     constructor() { }
 
     ngOnInit() {

@@ -1,0 +1,38 @@
+<div class="a">
+  <mat-table [dataSource]="dataSource">
+	<ng-container matColumnDef="userId" >
+		<mat-header-cell *matHeaderCellDef >Stt</mat-header-cell>
+		  <mat-cell *matCellDef="let user">{{ user.index }}</mat-cell>
+           </ng-container>
+    <ng-container matColumnDef="userName">
+      <mat-header-cell *matHeaderCellDef> Work Time </mat-header-cell>
+       <mat-cell *matCellDef="let user"> {{user.totalTime | date:"HH:mm"}} </mat-cell>
+            
+    </ng-container>
+    <ng-container matColumnDef="totalMinute">
+      <mat-header-cell *matHeaderCellDef> Check in </mat-header-cell>
+     <mat-cell *matCellDef="let user" > {{user.checkIn.createdDate | date:'dd-MM-yyyy, h:mm:ss a'}} </mat-cell>
+     </ng-container>
+
+    <ng-container matColumnDef="checkIn">
+      <mat-header-cell *matHeaderCellDef> Check out </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user?.checkOut?.createdDate|date:'dd-MM-yyyy, h:mm:ss a'}} </mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="checkOut">
+      <mat-header-cell *matHeaderCellDef> Detail </mat-header-cell>
+      <mat-cell *matCellDef="let user" >
+       <button mat-raised-button (click)="openDialog(user)">...</button> 
+     </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+
+
+</div>
+
