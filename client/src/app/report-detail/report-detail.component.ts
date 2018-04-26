@@ -74,7 +74,7 @@ export class UserDataSource extends DataSource<any> {
 export class Dialog {
 
   user: User;
-  
+
   constructor(
     public dialogRef: MatDialogRef<Dialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) { 
