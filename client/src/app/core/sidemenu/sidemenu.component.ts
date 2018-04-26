@@ -16,4 +16,7 @@ export class SidemenuComponent implements OnInit {
     ngOnInit() {
     }
 
+    clickedMenu(menu: any): void {
+      console.log('clicked menu', menu);
+    }
 }

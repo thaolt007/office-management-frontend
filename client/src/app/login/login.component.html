@@ -1,20 +1,21 @@
 
-<mat-card class="example-card">
-  <mat-card-header>
+<mat-card class="login-card">
+  <mat-card-title>
     <h1>Login Form</h1>
-  </mat-card-header>
+  </mat-card-title>
   <mat-card-content>
     <form class="login-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Username" (keyup)="onKey($event)">
+      <mat-form-field class="login-full-width">
+        <input matInput id="name" name="username" placeholder="Username" class="form-control" required>   
       </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password">
+      <mat-form-field class="login-full-width">
+        <input matInput name="password" ng-model="password" class="form-control" ng-minlength="6" ng-maxlength="30" placeholder="Password" required>
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button class="btn__clear" color="primary" >Clear</button>
-    <button mat-raised-button color="primary" class="btn__login" (click)="Login()">Login</button>
+    <button mat-raised-button class="btn btn__clear pull-left" >Clear</button>
+    <button mat-raised-button color="primary" class="btn btn__login pull-right" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)" (click)="Login()">Login</button>
   </mat-card-actions>
 </mat-card>
+<!-- (click)="Login()" -->

@@ -20,15 +20,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 import { CoreModule } from '../core/core.module';
+import {CheckinComponent} from '../checkin/checkin.component';
 
 export const appRoutes: Routes = [{
-      path:'',component: AuthComponent, children: [
+      path: '', component: AuthComponent,
+      children: [
         {path: 'dashboard', loadChildren: '../dashboard-crm/dashboard-crm.module#DashboardCrmModule'},
         {path: 'dashboard-account', loadChildren: '../dashboard-accounts/dashboard-accounts.module#DashboardAccountsModule'},
         {path: 'report-detail', loadChildren: '../report-detail/report-detail.module#ReportDetailModule'},
-        {path: 'report-timesheet', loadChildren: '../report-timesheet/report-timesheet.module#ReportTimesheetModule'},
+        
       ]}
-  ]
+  ];
 
 @NgModule({
   imports: [
