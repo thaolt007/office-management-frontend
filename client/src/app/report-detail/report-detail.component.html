@@ -4,12 +4,18 @@
 		<mat-header-cell *matHeaderCellDef >Stt</mat-header-cell>
 		  <mat-cell *matCellDef="let user">{{ user.index }}</mat-cell>
            </ng-container>
+               
     <ng-container matColumnDef="userName">
-      <mat-header-cell *matHeaderCellDef> Work Time </mat-header-cell>
-       <mat-cell *matCellDef="let user"> {{user.totalTime | date:"HH:mm"}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> UserName </mat-header-cell>
+      <mat-cell *matCellDef="let user">{{ user.userName }}</mat-cell>
+       
             
     </ng-container>
-    <ng-container matColumnDef="totalMinute">
+    <ng-container matColumnDef="totalMinute" >
+      <mat-header-cell *matHeaderCellDef >Work Time</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.totalTime | date:"HH:mm"}} </mat-cell>
+             </ng-container>  
+    <ng-container matColumnDef="totalTime">
       <mat-header-cell *matHeaderCellDef> Check in </mat-header-cell>
      <mat-cell *matCellDef="let user" > {{user.checkIn.createdDate | date:'dd-MM-yyyy, h:mm:ss a'}} </mat-cell>
      </ng-container>

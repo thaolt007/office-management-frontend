@@ -3,7 +3,7 @@ export interface User {
 	userName:string;
     totalMinute: number;
     totalTime?: Date;
-    check:string;
+    
     checkIn: {
     	note:string;
     	createdDate:Date;

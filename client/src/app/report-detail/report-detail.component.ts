@@ -16,7 +16,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class ReportDetailComponent implements OnInit {
 
   dataSource = new UserDataSource(this.userService);
-  displayedColumns = ['userId','userName','totalMinute', 'checkIn', 'checkOut'];
+  displayedColumns = ['userId','userName','totalMinute','totalTime', 'checkIn', 'checkOut'];
    
 
   
