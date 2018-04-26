@@ -10,7 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule} from '@angular/material';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -34,12 +34,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
 
   declarations: [
-  SidemenuComponent, 
-  SidemenuItemComponent, 
-  ToolbarNotificationComponent, 
-  ToolbarComponent, 
-  SearchBarComponent, 
-  FullscreenComponent, 
+  SidemenuComponent,
+  SidemenuItemComponent,
+  ToolbarNotificationComponent,
+  ToolbarComponent,
+  SearchBarComponent,
+  FullscreenComponent,
   SidebarComponent,
   UserMenuComponent
   ],
@@ -62,13 +62,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatProgressBarModule,
   ],
 
-  
+
   exports: [
-  SidemenuComponent, 
-  SidemenuItemComponent, 
-  ToolbarNotificationComponent, 
-  ToolbarComponent, 
-  SearchBarComponent, 
+  SidemenuComponent,
+  SidemenuItemComponent,
+  ToolbarNotificationComponent,
+  ToolbarComponent,
+  SearchBarComponent,
   FullscreenComponent,
   SidebarComponent,
   UserMenuComponent
@@ -79,6 +79,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     }
-  ]  
+  ]
 })
 export class CoreModule { }
