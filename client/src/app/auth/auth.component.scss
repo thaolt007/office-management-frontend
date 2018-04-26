@@ -4,9 +4,9 @@
     $accent: map-get($theme, accent);
     $warn: map-get($theme, warn);
 
-    
+
     .sidenav,.drawer{
-        background: mat-color($primary,400);    
+        background: whitesmoke;
         overflow: hidden;
         position: relative;
     }

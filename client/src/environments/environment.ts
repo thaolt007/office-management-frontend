@@ -16,7 +16,7 @@ export const environment = {
   mailApi: '/assets/list.json'
 };
 export const palete = {
-    primary: '#D32F2F',
+    primary: '#d76767',
     accent: '#E65100',
     warm: '#C2185B',
     name: '#D50000',
@@ -27,5 +27,5 @@ export const palete = {
     secondaryLight: '#E91E63',
     tertiaryLight: '#9C27B0',
     quaternaryLight: '#673AB7',
-    quinaryLight: '#3F51B5'       
+    quinaryLight: '#3F51B5'
 }
