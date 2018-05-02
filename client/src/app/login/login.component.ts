@@ -4,18 +4,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'cdk-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent implements OnInit {
   constructor(
-    private router: Router
-  ) { }
-
-  ngOnInit() {
+    private router: Router,
+  ) {
   }
-  Login(){
-    this.router.navigate(['/auth/dashboard']);
-  };
 
+  ngOnInit() { }
+  Login() {
+    this.router.navigate(['/auth-layout/dashboard']);
+  }
 }

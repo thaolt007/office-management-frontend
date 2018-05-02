@@ -33,10 +33,12 @@
   .mat-card-actions{
     margin: 0;
     padding: 0 30px;
-
+    .btn{
+      padding:6px 60px;
+    }
     .btn__clear{
       border-radius: 3px;
-      padding:6px 60px;
+
       font-size: 16px;
       letter-spacing: 1px;
       font-weight: 500;
@@ -54,9 +56,33 @@
       letter-spacing: 1px;
       cursor: pointer;
       border-radius: 3px;
-      padding:6px 60px;
       color: white;
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+@media screen and (max-width: 768px){
+  .container{
+    width: auto;
+  }
+}
+@media screen and (max-width: 480px){
+  .container{
+    padding: 0 15px;
+    width: auto;
+    .login-card{
+      width: inherit;
+      .btn{
+        width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+      }
+      .btn__clear{
+        text-align: center;
+      }
+      .btn__login{
+        margin: 0;
+      }
     }
   }
 }
