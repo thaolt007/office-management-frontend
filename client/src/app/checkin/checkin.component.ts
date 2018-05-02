@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy  } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
@@ -12,19 +12,28 @@ import { Checkin } from './Checkin';
   styleUrls: ['./checkin.component.scss']
 })
 
-export class CheckinComponent implements OnInit {
+export class CheckinComponent implements OnInit, OnDestroy {
+
 
   constructor(private http: HttpClient, private checkinService: CheckinService) { }
   checkin: Checkin;
   timer = new Date();
-  userId = 2;
+  userId = 1;
+  intervalId = 0;
 
   ngOnInit() {
     this.runClock();
     this.checkinService.isCheckinDone(this.userId, this.timer).subscribe(
-      checkin => this.checkin = checkin, 
+      checkin => {
+        this.checkin = checkin;
+        this.checkinService.changeMessage(true);
+      },
       error => console.log('oops error ', error.status)
     );
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
   }
 
   checkinSubmit(note: string): void {
@@ -35,14 +44,17 @@ export class CheckinComponent implements OnInit {
     this.checkin.userId = this.userId;
 
     this.checkinService.saveCheckin(this.checkin).subscribe(
-      checkin => this.checkin = checkin, 
+      checkin => {
+        this.checkin = checkin;
+        this.checkinService.changeMessage(true);
+      },
       error => console.log('oops error ', error.status)
     );
     console.log(note);
   }
 
   runClock(): void {
-    setInterval(() => { this.timer = new Date(); }, 1000);
+    this.intervalId = window.setInterval(() => { this.timer = new Date(); }, 1000);
   }
   
 }

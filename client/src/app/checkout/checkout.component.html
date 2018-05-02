@@ -6,6 +6,7 @@
 
   <div *ngIf="!checkin">
     <p>You are not checkin. Please checkin first!</p>
+    <button  class="checkoutBtn" mat-button routerLink="/auth/dashboard/checkin">Checkin</button>
   </div>
 
   <form class="example-form" *ngIf="checkin && !checkout">
@@ -17,6 +18,7 @@
   </form>
   
   <div *ngIf="checkout">
-    <p>You done checkout at {{checkout.createdDate | date: 'HH:mm:ss dd:MM:yyyy'}}</p>
+    <p>You done checkout at {{checkout.createdDate | date: 'HH:mm:ss dd/MM/yyyy'}}</p>
     <p>Note: {{checkout.note}}</p>
   </div>
+<!-- <button (click)="onClickDialog()">Checkout Dialog</button> -->

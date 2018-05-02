@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { menus } from './menu-element';
+import { CheckinService } from '../../checkin/checkin.service';
 
 @Component({
   selector: 'cdk-sidemenu',
@@ -9,11 +10,18 @@ import { menus } from './menu-element';
 export class SidemenuComponent implements OnInit {
 
     @Input() iconOnly:boolean = false;
+    doneCheckin = false;
     public menus = menus;
+    
 
-    constructor() { }
+    constructor(private checkinService: CheckinService) {}
 
     ngOnInit() {
+      this.checkinService.messageSource.subscribe(done => {
+        this.doneCheckin = done;
+        console.log("sidemenu: ", done);
+      });
+      
     }
 
     clickedMenu(menu: any): void {

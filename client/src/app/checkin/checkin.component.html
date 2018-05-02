@@ -10,6 +10,6 @@
   <button  class="checkinBtn" mat-button (click)="checkinSubmit(noteCheckin.value)">Checkin</button>
 </form>
 <div *ngIf="checkin">
-  <p>You done checkin at {{checkin.createdDate | date: 'HH:mm:ss dd:MM:yyyy'}}</p>
+  <p>You done checkin at {{checkin.createdDate | date: 'HH:mm:ss dd/MM/yyyy'}}</p>
   <p>Note: {{checkin.note}}</p>
 </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { CheckinService } from '../checkin/checkin.service';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard-crm',
@@ -6,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-crm.component.scss']
 })
 export class DashboardCrmComponent implements OnInit {
-
+    userId = 1;
+    checkined: boolean;
     public dashCard = [
         {colorDark: '#5C6BC0',colorLight: '#7986CB', number: 1221, title: 'SALES',icon:'local_grocery_store'},
         {colorDark: '#42A5F5',colorLight: '#64B5F6', number: 1221, title: 'LEADS',icon:'new_releases'},
@@ -23,9 +26,50 @@ export class DashboardCrmComponent implements OnInit {
         { country: 'Brazil', sales: 100, percentage: '2.50%' },
     ];
 
-    constructor() { }
+    constructor(private checkinService: CheckinService, public dialog: MatDialog) { }
 
     ngOnInit() {
+        // console.log("ngOnInit Dashboard");
+        this.checkinService.isCheckinDone(this.userId, new Date()).subscribe(
+            checkin => {
+                this.checkinService.changeMessage(true);
+                this.checkined = true;
+            },
+            error => {
+                this.checkined = false;
+                this.openDialog();
+            }
+        );
     }
 
+    openDialog(): void {
+        let dialogRef = this.dialog.open(DialogCheckin, {
+          width: '250px'
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+      }
+
 }
+
+@Component({
+    selector: 'dialog-overview-example-dialog',
+    template: `
+    <h2 mat-dialog-title>You need checkin</h2>
+    <button mat-button (click)="onCancle()" routerLink="/auth/dashboard/checkin">CheckIn</button>
+    <button mat-button (click)="onCancle()">Cancle</button>
+    `
+  })
+export class DialogCheckin {
+  
+    constructor(
+      public dialogRef: MatDialogRef<DialogCheckin>,
+      @Inject(MAT_DIALOG_DATA) public data: any) { }
+  
+    onCancle(): void {
+      this.dialogRef.close();
+    }
+  
+  }
