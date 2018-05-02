@@ -9,7 +9,7 @@ export const menus = [
     {
     "name": "Report",
     "link": "/auth/report-detail",
-    "icon": "detail",
+    "icon": "dashboard",
     },
   {
     "name": "Check In",
