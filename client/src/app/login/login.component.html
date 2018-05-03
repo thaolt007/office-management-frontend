@@ -5,17 +5,19 @@
       <h1>Login Form</h1>
     </mat-card-title>
     <mat-card-content>
-      <form class="login-form">
+      <form class="login-form" action="?go" method="post">
         <mat-form-field class="login-full-width">
-          <input matInput id="name" name="username" placeholder="Username" class="form-control" required>
+          <input matInput placeholder="Email" class="form-control" [formControl] = "email" [(ngModel)]="clearName" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field class="login-full-width">
-          <input matInput name="password" ng-model="password" class="form-control" ng-minlength="6" ng-maxlength="30" placeholder="Password" required>
+          <input matInput name="password" ng-model="password" class="form-control" [type]="hide ? 'password' : 'text'"  placeholder="Password" [(ngModel)]="clearPass" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
         </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button class="btn btn__clear pull-left">Clear</button>
+      <button mat-raised-button class="btn btn__clear pull-left" (click)="clearName = ''" (click)= "clearPass = ''">Clear</button>
       <button mat-raised-button color="primary" class="btn btn__login pull-right" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)" (click)="Login()">Login</button>
     </mat-card-actions>
   </mat-card>

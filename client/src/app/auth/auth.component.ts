@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component,  OnInit, Input} from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
 
@@ -12,7 +12,7 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 })
 
 export class AuthComponent implements OnInit{
-  @Input() isVisible : boolean = true;
+  @Input() isVisible: boolean = true;
   visibility = 'shown';
 
   sideNavOpened: boolean = true;
@@ -23,8 +23,7 @@ export class AuthComponent implements OnInit{
   ngOnChanges() {
    this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
-
-	constructor(private media: ObservableMedia) { }
+  constructor(private media: ObservableMedia) { }
 
 	ngOnInit() {
 		this.media.subscribe((mediaChange: MediaChange) => {
@@ -34,7 +33,6 @@ export class AuthComponent implements OnInit{
     getRouteAnimation(outlet) {
 
        return outlet.activatedRouteData.animation;
-       //return outlet.isActivated ? outlet.activatedRoute : ''
     }
 
 	toggleView() {
