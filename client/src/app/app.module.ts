@@ -18,10 +18,6 @@ import { CheckinComponent } from './checkin/checkin.component';
 import { CheckinService } from './checkin/checkin.service';
 import { DialogCheckin } from './dashboard-crm/dashboard-crm.component';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

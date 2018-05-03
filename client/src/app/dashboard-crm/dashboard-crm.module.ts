@@ -1,3 +1,4 @@
+import { DashboardService } from './dashboard.service';
 import { AppMaterialModule } from './../app-material/app-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -30,7 +31,7 @@ export const appRoutes: Routes = [
   declarations: [DashboardCrmComponent, CheckinComponent, CheckoutComponent],
   exports:[],
   providers: [
-    CheckoutService
+    CheckoutService, DashboardService
   ],
 })
 export class DashboardCrmModule { }

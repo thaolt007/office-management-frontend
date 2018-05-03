@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { CheckinService } from './../../checkin/checkin.service';
+import { DashboardService } from './../../dashboard-crm/dashboard.service';
+
+import { User } from './../../models/user.model';
+import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -7,23 +11,52 @@ import { Chart } from 'chart.js';
   styleUrls: ['./line-graph.component.scss']
 })
 export class LineGraphComponent implements OnInit {
-
-  constructor() { }
+    days: number[] = [];
+    @Input() reports: User[];
+    listTimeDay: number[] = [];
+    userId = 1;
+    totalTimeWork: number = 0;
+    timeHours: string;
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
     setTimeout(() => {
         this.createLineChart();
     },500)
+    this.takeData();
+  }
+
+  takeData() {
+      console.log("takeData of line-graph");
+      for(let i=1; i<=30; i++) {
+        this.days.push(i);
+      }
+
+    //   this.dashboardService.getMainReport(this.userId).subscribe(
+    //       reports => {
+    //           this.reports = reports;
+              console.log(this.reports);
+                for(let report of this.reports) {
+                    this.listTimeDay.push(report.totalMinute);
+                    this.totalTimeWork += report.totalMinute;
+                }
+                this.calculateShowTime();
+    //       }
+    //   ); 
+  }
+  calculateShowTime() {
+    let hour = parseInt((this.totalTimeWork/60).toString());
+    this.timeHours = `${hour}h${this.totalTimeWork%60}p in this month`;
   }
   createLineChart() {
       new Chart('line-graph', {
                 type: 'line',
                 data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug","Sep",'Oct'],
+                    labels: this.days,
                     datasets: [{
                         backgroundColor: 'rgba(92, 107, 192, 0.36)',
                         borderColor: 'rgba(92, 107, 192,.5)',
-                        data: [76.97, 88.91, 99.31, 122.19, 130.85, 140.91, 150.36, 142.66, 150.36, 142.66],
+                        data: this.listTimeDay,
                         label: 'Dataset',
                         fill: 'start'
                     }]
@@ -45,7 +78,7 @@ export class LineGraphComponent implements OnInit {
                     },
                     title: {
                         display: true,
-                        text: 'ASSIGNMENTS GRAPH '
+                        text: this.timeHours
                     }
                 }
         })

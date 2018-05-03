@@ -1,6 +1,10 @@
+import { BehaviorSubject } from 'rxjs';
+import { DashboardService } from './dashboard.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { CheckinService } from '../checkin/checkin.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { User } from '../models/user.model';
+import { ReportDetailDialog } from '../report-detail/report-detail.component';
 
 @Component({
   selector: 'app-dashboard-crm',
@@ -10,6 +14,10 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 export class DashboardCrmComponent implements OnInit {
     userId = 1;
     checkined: boolean;
+    reports: User[];
+    displayedColumns = ['stt', 'workTime', 'checkIn', 'checkOut', 'detail'];
+    dataSource = [];
+    
     public dashCard = [
         {colorDark: '#5C6BC0',colorLight: '#7986CB', number: 1221, title: 'SALES',icon:'local_grocery_store'},
         {colorDark: '#42A5F5',colorLight: '#64B5F6', number: 1221, title: 'LEADS',icon:'new_releases'},
@@ -26,7 +34,10 @@ export class DashboardCrmComponent implements OnInit {
         { country: 'Brazil', sales: 100, percentage: '2.50%' },
     ];
 
-    constructor(private checkinService: CheckinService, public dialog: MatDialog) { }
+    constructor(private checkinService: CheckinService, 
+        public dialog: MatDialog, 
+        private dashboardService: DashboardService,
+    ) { }
 
     ngOnInit() {
         // console.log("ngOnInit Dashboard");
@@ -37,12 +48,22 @@ export class DashboardCrmComponent implements OnInit {
             },
             error => {
                 this.checkined = false;
-                this.openDialog();
+                this.openCheckInDialog();
+            }
+        );
+        this.takeData();
+    }
+
+    takeData() {
+        this.dashboardService.getMainReport(this.userId).subscribe(
+            reports => {
+                this.reports = reports;
+                this.dataSource = this.reports;
+                console.log(this.dataSource);
             }
         );
     }
-
-    openDialog(): void {
+    openCheckInDialog(): void {
         let dialogRef = this.dialog.open(DialogCheckin, {
           width: '250px'
         });
@@ -51,6 +72,19 @@ export class DashboardCrmComponent implements OnInit {
           console.log('The dialog was closed');
         });
       }
+    
+    openMainDetailDialog(user: User) {
+        console.log("click mainDetailDialog", user);
+        let dialogRef = this.dialog.open(ReportDetailDialog, {
+            width: '750px',
+            height: '400px',
+            data: {user}
+          });
+      
+          dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+          });
+    }
 
 }
 

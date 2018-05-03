@@ -30,7 +30,8 @@ export class ReportDetailComponent implements OnInit {
   animal: string;
    
   openDialog(user): void {
-    let dialogRef = this.dialog.open(Dialog, {
+    console.log(user.totalTime);
+    let dialogRef = this.dialog.open(ReportDetailDialog, {
       width: '750px',height:'400px',
       data: { user }
     });
@@ -71,12 +72,12 @@ export class UserDataSource extends DataSource<any> {
   templateUrl: './report-detail-dialog.component.html',
   styleUrls: ['./report-detail.component.css']
 })
-export class Dialog {
+export class ReportDetailDialog {
 
   user: User;
 
   constructor(
-    public dialogRef: MatDialogRef<Dialog>,
+    public dialogRef: MatDialogRef<ReportDetailDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) { 
     this.user = data.user;
   }
