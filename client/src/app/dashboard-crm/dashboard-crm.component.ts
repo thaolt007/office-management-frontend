@@ -73,6 +73,7 @@ export class DashboardCrmComponent implements OnInit {
         this.dashboardService.getMainReport(this.userId, this.pageEvent).subscribe(
             reports => {
                 this.reports = reports["content"];
+                this.pageEvent.length = reports["totalElements"];
                 this.dataSource = this.reports;
                 console.log(this.dataSource);
             }

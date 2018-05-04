@@ -1,3 +1,4 @@
+import { PageEvent } from '@angular/material';
 import { Injectable }   from '@angular/core';
 import { HttpClient }   from '@angular/common/http';
 import { Observable }   from 'rxjs/Observable';
@@ -10,9 +11,10 @@ export class UserService {
   private a;
   constructor(private http: HttpClient) { }
 
-  getUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.serviceUrl).pipe(
-    		map(res => this.parseUsersResponse(res))
+  getUser(pageEvent: PageEvent): Observable<User[]> {
+    return this.http.get<User[]>(`${this.serviceUrl}?size=${pageEvent.pageSize}&page=${pageEvent.pageIndex}`).pipe(
+				map(res => this.parseUsersResponse(res["content"])
+			)
     	);
   }
 

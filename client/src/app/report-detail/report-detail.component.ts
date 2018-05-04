@@ -6,7 +6,7 @@ import 'rxjs/add/observable/of';
 import {DataSource} from '@angular/cdk/collections';
 import { User } from '../models/user.model';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-report-detail',
@@ -15,15 +15,20 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class ReportDetailComponent implements OnInit {
 
-  dataSource = new UserDataSource(this.userService);
+  dataSource: UserDataSource;
   displayedColumns = ['userId','userName','totalMinute','totalTime', 'checkIn', 'checkOut'];
-   
+  pageEvent = new PageEvent();
+  pageSizeOptions = [5, 10, 25, 100];
 
   constructor(private userService: UserService, public dialog: MatDialog) {
     
    }
 
   ngOnInit() {
+    this.pageEvent.length = 10;
+    this.pageEvent.pageSize = 10;
+    this.pageEvent.pageIndex = 0;
+    this.dataSource  = new UserDataSource(this.userService, this.pageEvent);
   }
   animal: string;
    
@@ -39,16 +44,21 @@ export class ReportDetailComponent implements OnInit {
       this.animal = result;
     });
   }
+
+  changePage(event: PageEvent) {
+    this.pageEvent = event;
+    this.dataSource  = new UserDataSource(this.userService, this.pageEvent);
+  }
 }
 
 export class UserDataSource extends DataSource<any> {
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private pageEvent: PageEvent) {
     super();
   }
 
   connect(): Observable<User[]> {
-    return this.userService.getUser().pipe(
+    return this.userService.getUser(this.pageEvent).pipe(
         map(res => this.addArrayIndex(res))
       );
   }
