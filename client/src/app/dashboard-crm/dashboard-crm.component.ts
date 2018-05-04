@@ -2,7 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 import { DashboardService } from './dashboard.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { CheckinService } from '../checkin/checkin.service';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, PageEvent } from '@angular/material';
 import { User } from '../models/user.model';
 import { ReportDetailDialog } from '../report-detail/report-detail.component';
 
@@ -17,6 +17,9 @@ export class DashboardCrmComponent implements OnInit {
     reports: User[];
     displayedColumns = ['stt', 'workTime', 'checkIn', 'checkOut', 'detail'];
     dataSource = [];
+
+    pageSizeOptions = [5, 10, 25, 100];
+    pageEvent= new PageEvent();
     
     public dashCard = [
         {colorDark: '#5C6BC0',colorLight: '#7986CB', number: 1221, title: 'SALES',icon:'local_grocery_store'},
@@ -39,6 +42,12 @@ export class DashboardCrmComponent implements OnInit {
         private dashboardService: DashboardService,
     ) { }
 
+    changePage(event: PageEvent) {
+        this.pageEvent = event;
+        this.takeData();
+        console.log(event);
+    }
+
     ngOnInit() {
         // console.log("ngOnInit Dashboard");
         this.checkinService.isCheckinDone(this.userId, new Date()).subscribe(
@@ -52,12 +61,18 @@ export class DashboardCrmComponent implements OnInit {
             }
         );
         this.takeData();
+        this.pageEvent.length = 10;
+        this.pageEvent.pageSize = 10;
+        this.pageEvent.pageIndex = 0;
+    
+        console.log(this.pageEvent);
+
     }
 
     takeData() {
-        this.dashboardService.getMainReport(this.userId).subscribe(
+        this.dashboardService.getMainReport(this.userId, this.pageEvent).subscribe(
             reports => {
-                this.reports = reports;
+                this.reports = reports["content"];
                 this.dataSource = this.reports;
                 console.log(this.dataSource);
             }

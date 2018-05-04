@@ -50,4 +50,10 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
+  <mat-paginator *ngIf="pageEvent" 
+              [length]="pageEvent.length"
+              [pageSize]="pageEvent.pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="changePage($event)">
+</mat-paginator>
 

@@ -1,3 +1,4 @@
+import { PageEvent } from '@angular/material';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,7 +17,7 @@ export class DashboardService {
   apiUrl = 'http://172.16.10.142:8080/api/main/timesheet';
   constructor(private http: HttpClient) { }
 
-  getMainReport(userId: number): Observable<User[]> {
-    return this.http.post<User[]>(this.apiUrl, {"userId": userId}, httpOptions).pipe();
+  getMainReport(userId: number, pageEvent: PageEvent): Observable<User[]> {
+    return this.http.post<User[]>(`${this.apiUrl}?size=${pageEvent.pageSize}&page=${pageEvent.pageIndex}`, {"userId": userId}, httpOptions).pipe();
   }
 }

@@ -19,8 +19,6 @@ export class ReportDetailComponent implements OnInit {
   displayedColumns = ['userId','userName','totalMinute','totalTime', 'checkIn', 'checkOut'];
    
 
-  
-
   constructor(private userService: UserService, public dialog: MatDialog) {
     
    }
