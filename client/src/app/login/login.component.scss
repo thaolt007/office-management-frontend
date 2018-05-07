@@ -27,7 +27,21 @@
     .mat-form-field{
       width: 100%;
       font-size: 16px;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
+      .mat-icon{
+        line-height: 0.8;
+        font-size: 120%;
+        cursor: pointer;
+      }
+      input {
+        background-color: #FFF !important;
+       }
+       input:-webkit-autofill {
+        background-color: #FFF !important;
+        }
+        input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0px 1000px white inset;
+        }
     }
   }
   .mat-card-actions{
@@ -67,6 +81,26 @@
   }
 }
 @media screen and (max-width: 480px){
+  .container{
+    padding: 0 15px;
+    width: auto;
+    .login-card{
+      width: inherit;
+      .btn{
+        width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+      }
+      .btn__clear{
+        text-align: center;
+      }
+      .btn__login{
+        margin: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 320px){
   .container{
     padding: 0 15px;
     width: auto;

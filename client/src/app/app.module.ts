@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';//mới tạo
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
@@ -32,8 +32,7 @@ import { DialogCheckin } from './dashboard-crm/dashboard-crm.component';
     FormsModule,
     ReactiveFormsModule,
     ReportDetailModule,
-    HttpClientModule,
-    
+    HttpClientModule
   ],
   exports: [
     ReactiveFormsModule,
